@@ -65,7 +65,7 @@ Interfaz adaptativa según tipo de discapacidad:
 ├── 🐍 shape_detector.py                  ← Módulo: Detector de formas
 ├── 🐍 color_detector.py                  ← Módulo: Detector de colores
 ├── 🐍 integrated_system.py               ← Módulo: Sistema integrado
-├── 🐍 inclusive_learning_system.py       ← ⭐ Módulo principal (RECOMENDADO)
+├── 🐍 inclusive_learning_system.py       ← ⭐ Módulo principal 
 │
 └── 📁 docs/
     ├── imagenes/                         ← Capturas de pantalla
