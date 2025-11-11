@@ -1,0 +1,56 @@
+# Requisitos del Sistema de Aprendizaje Inclusivo con Visión Artificial
+# Proyecto: Reconocimiento de Objetos Didácticos en Educación Especial
+
+# ============================================================================
+# DEPENDENCIAS BÁSICAS (Requeridas)
+# ============================================================================
+
+# Visión artificial
+opencv-python>=4.5.0
+numpy>=1.19.0
+imutils>=0.5.4
+
+# Síntesis de voz
+pyttsx3>=2.90
+
+# Sistema de archivos y utilidades
+Pillow>=8.0.0
+python-dateutil>=2.8.0
+
+# ============================================================================
+# DEPENDENCIAS OPCIONALES (Para funcionalidades avanzadas)
+# ============================================================================
+
+# Mejor rendimiento de OpenCV
+# opencv-contrib-python>=4.5.0
+
+# ============================================================================
+# MACHINE LEARNING (Opcional - Para entrenar modelos personalizados)
+# ============================================================================
+
+# YOLOv8 - Detección de objetos didácticos con ML
+# Descomenta la siguiente línea si quieres usar modelos entrenados:
+# ultralytics>=8.0.0
+
+# PyTorch (requerido por ultralytics)
+# Se instala automáticamente con ultralytics, pero puedes especificar versión:
+# torch>=2.0.0
+# torchvision>=0.15.0
+
+# Visualización de entrenamiento
+# tensorboard>=2.12.0
+
+# ============================================================================
+# INSTALACIÓN RÁPIDA
+# ============================================================================
+#
+# Instalación básica (sin ML):
+#   pip install -r requirements.txt
+#
+# Instalación completa (con ML):
+#   pip install -r requirements.txt ultralytics tensorboard
+#
+# Instalación para desarrollo:
+#   pip install -e .
+#
+# ============================================================================
