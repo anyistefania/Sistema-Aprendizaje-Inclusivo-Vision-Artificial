@@ -1,0 +1,19 @@
+# Requisitos del Sistema de Aprendizaje Inclusivo con Visión Artificial
+# Proyecto: Reconocimiento de Objetos Didácticos en Educación Especial
+
+# Bibliotecas principales
+opencv-python>=4.5.0
+numpy>=1.19.0
+imutils>=0.5.4
+
+# Síntesis de voz
+pyttsx3>=2.90
+
+# Opcional: para mejor rendimiento
+opencv-contrib-python>=4.5.0
+
+# Sistema de archivos y utilidades
+Pillow>=8.0.0
+
+# Para guardar datos de progreso
+python-dateutil>=2.8.0
