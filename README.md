@@ -359,14 +359,6 @@ Para preguntas, sugerencias o compartir experiencias, contacta al equipo del pro
 ✅ Adaptación por discapacidad  
 ✅ Registro de progreso  
 
-### Versión 2.0 (Planeada)
-- [ ] App móvil (Android/iOS)
-- [ ] Reconocimiento de objetos 3D
-- [ ] Más idiomas (inglés, portugués)
-- [ ] Gamificación avanzada
-- [ ] Integración con LMS
-- [ ] Dashboard para docentes
-- [ ] Análisis predictivo con ML
 
 ---
 
@@ -380,17 +372,7 @@ Este sistema busca democratizar el acceso a tecnología asistiva en educación e
 - 👥 **Inclusivo:** Adaptado a múltiples discapacidades
 - 📈 **Escalable:** Puede usarse en cualquier institución
 
----
 
-## ⭐ Si este proyecto te ayudó
-
-- Comparte con otros educadores
-- Adapta a tu contexto específico
-- Documenta tus experiencias
-- Contribuye mejoras al código
-- Cita en trabajos académicos
-
----
 
 ## 📸 Capturas de Pantalla
 
@@ -403,11 +385,9 @@ Este sistema busca democratizar el acceso a tecnología asistiva en educación e
 ### Registro de Progreso
 ![Dashboard de progreso del estudiante]
 
-*(Las imágenes se agregarán al usar el sistema)*
 
 ---
 
-**Desarrollado con ❤️ para la educación inclusiva**
 
 **Versión:** 1.0  
 **Última actualización:** Noviembre 2025  
@@ -415,12 +395,3 @@ Este sistema busca democratizar el acceso a tecnología asistiva en educación e
 
 ---
 
-## 🎬 Video Tutorial
-
-*(Próximamente: Tutorial en video mostrando instalación y uso)*
-
----
-
-¡Gracias por usar este sistema para crear entornos de aprendizaje inclusivos! 🌟
-
-**#EducaciónInclusiva #VisiónArtificial #TecnologíaAsistiva #EducaciónEspecial #OpenSource**
