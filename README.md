@@ -1,397 +1,337 @@
 # 🎓 Sistema de Aprendizaje Inclusivo con Visión Artificial
 
-## Reconocimiento de Objetos Didácticos en Educación Especial
+Sistema especializado para educación especial que utiliza visión artificial para detectar objetos didácticos, con interfaz adaptativa según el tipo de discapacidad del estudiante. Fundamentado en principios del Diseño Universal para el Aprendizaje (CAST, 2018) e investigación reciente sobre IA en educación especial (Zhang et al., 2024).
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![OpenCV](https://img.shields.io/badge/OpenCV-4.5+-green.svg)](https://opencv.org/)
-[![License](https://img.shields.io/badge/License-Educational-orange.svg)]()
+**Versión 2.1** - Clean Architecture + Machine Learning
 
----
+**Proyecto Académico** | **Referencias Verificables** | **Metodología Replicable**
 
-## 📌 Descripción
+## 🏗️ Arquitectura
 
-Sistema de **visión artificial** diseñado específicamente para crear **entornos de aprendizaje inclusivos** en educación especial. Utiliza la cámara web para detectar y reconocer formas geométricas y colores en tiempo real, proporcionando retroalimentación adaptada a las necesidades de cada estudiante.
+Este proyecto sigue los principios de **Clean Architecture** (Martin, 2017) integrada con **Domain-Driven Design** (Evans, 2003) para garantizar:
+- ✅ Separación de responsabilidades
+- ✅ Independencia de frameworks
+- ✅ Testabilidad
+- ✅ Mantenibilidad
+- ✅ Escalabilidad
 
-### 🎯 Objetivos del Proyecto
+> "Las dependencias del código fuente solo deben apuntar hacia adentro, hacia capas de abstracción más altas." (Martin, 2017, p. 203)
 
-✅ Facilitar el aprendizaje de formas y colores en estudiantes con necesidades educativas especiales  
-✅ Proporcionar retroalimentación multimodal (visual, auditiva, textual)  
-✅ Promover la autonomía del estudiante en el proceso de aprendizaje  
-✅ Registrar y analizar el progreso individual  
-✅ Ofrecer herramientas accesibles y de bajo costo para instituciones educativas  
-
----
-
-## 🌟 Características Principales
-
-### 🔍 Detección Inteligente
-- **Formas:** Círculo, triángulo, cuadrado, rectángulo, pentágono
-- **Colores:** Rojo, azul, verde, amarillo, naranja, morado
-- **Precisión:** >90% en condiciones óptimas
-- **Tiempo real:** 25-30 FPS
-
-### ♿ Adaptación Inclusiva
-Interfaz adaptativa según tipo de discapacidad:
-- 👁️ **Baja visión:** Texto grande, alto contraste
-- 👂 **Discapacidad auditiva:** Retroalimentación visual reforzada
-- 🧠 **Discapacidad cognitiva:** Interfaz simplificada, ritmo pausado
-- 💬 **Trastornos del lenguaje:** Descripciones verbales detalladas
-- ♿ **Discapacidad múltiple:** Combinación de adaptaciones
-
-### 🎤 Retroalimentación por Voz
-- Síntesis de voz en español
-- Velocidad ajustable
-- Descripciones educativas contextualizadas
-- Refuerzo positivo constante
-
-### 📊 Seguimiento del Progreso
-- Registro de sesiones en formato JSON
-- Estadísticas de aciertos/intentos
-- Historial de objetos reconocidos
-- Análisis de evolución
-
----
-
-## 🗂️ Estructura del Proyecto
+### Estructura del Proyecto
 
 ```
-📁 EducacionInclusiva/
+Sistema-Aprendizaje-Inclusivo-Vision-Artificial/
 │
-├── 📄 README.md                          ← Documento principal
-├── 📄 MANUAL_USUARIO.md                  ← Manual completo de usuario
-├── 📄 articulo_investigacion.md          ← Artículo científico completo
-├── 📄 requirements.txt                   ← Dependencias del proyecto
+├── src/                              # Código fuente
+│   ├── domain/                       # 🔵 CAPA DE DOMINIO
+│   │   ├── entities/                 # Entidades de negocio
+│   │   │   ├── student.py           # Entidad Student
+│   │   │   ├── detection_result.py  # Resultado de detección
+│   │   │   └── learning_session.py  # Sesión de aprendizaje
+│   │   └── repositories/             # Interfaces de repositorios
+│   │       └── session_repository.py # Interfaz para persistencia
+│   │
+│   ├── application/                  # 🟢 CAPA DE APLICACIÓN
+│   │   ├── use_cases/                # Casos de uso
+│   │   │   ├── detect_shape_use_case.py
+│   │   │   ├── detect_color_use_case.py
+│   │   │   ├── adapt_interface_use_case.py
+│   │   │   └── save_progress_use_case.py
+│   │   └── services/                 # Servicios de aplicación
+│   │       └── feedback_service.py  # Servicio de retroalimentación
+│   │
+│   ├── infrastructure/               # 🟡 CAPA DE INFRAESTRUCTURA
+│   │   ├── detection/                # Implementaciones de detección
+│   │   │   ├── shape_detector.py
+│   │   │   └── color_detector.py
+│   │   ├── speech/                   # Motor de síntesis de voz
+│   │   │   └── text_to_speech_engine.py
+│   │   ├── camera/                   # Captura de video
+│   │   │   └── video_capture_handler.py
+│   │   └── persistence/              # Persistencia
+│   │       └── json_session_repository.py
+│   │
+│   └── presentation/                 # 🔴 CAPA DE PRESENTACIÓN
+│       └── cli/                      # Interfaces de línea de comandos
+│           ├── main_menu.py         # Menú principal
+│           └── learning_interface.py # Interfaz de aprendizaje
 │
-├── 🐍 shape_detector.py                  ← Módulo: Detector de formas
-├── 🐍 color_detector.py                  ← Módulo: Detector de colores
-├── 🐍 integrated_system.py               ← Módulo: Sistema integrado
-├── 🐍 inclusive_learning_system.py       ← ⭐ Módulo principal 
+├── tests/                            # Tests unitarios e integración
+│   ├── domain/
+│   ├── application/
+│   └── infrastructure/
 │
-└── 📁 docs/
-    ├── imagenes/                         ← Capturas de pantalla
-    ├── ejemplos/                         ← Ejemplos de uso
-    └── videos/                           ← Tutoriales en video
+├── config/                           # Configuración
+│   └── settings.py                  # Configuración global
+│
+├── docs/                             # Documentación
+│   ├── README.md                    # Documentación principal (movida)
+│   ├── MANUAL_USUARIO.md            # Manual de usuario
+│   ├── RESUMEN_EJECUTIVO.md         # Resumen ejecutivo
+│   └── articulo_investigacion.md    # Artículo científico
+│
+├── scripts/                          # Scripts auxiliares
+│   ├── generar_imagenes_prueba.py   # Generador de imágenes
+│   └── integrated_system.py         # Sistema integrado
+│
+├── main.py                          # 🚀 Punto de entrada principal
+├── setup.py                         # Configuración de instalación
+├── requirements.txt                 # Dependencias
+├── .gitignore                       # Archivos ignorados por git
+└── INICIAR.py                       # Script de inicio (legacy)
 ```
 
----
+## 🎯 Capas de la Arquitectura
 
-## 🚀 Instalación Rápida
+### 🔵 Domain (Dominio)
+La capa más interna. Contiene las **reglas de negocio** y entidades principales (Evans, 2003):
+- **Entities**: `Student`, `DetectionResult`, `LearningSession`, `EducationalObject`
+- **Repository Interfaces**: Contratos para persistencia
+- **Sin dependencias** de otras capas
+- **Lenguaje ubicuo** del dominio educativo
 
-### 1️⃣ Requisitos Previos
+### 🟢 Application (Aplicación)
+Contiene la **lógica de aplicación** y casos de uso:
+- **Use Cases**: Operaciones específicas del sistema
+- **Services**: Servicios de dominio
+- **Depende solo** de la capa Domain
+
+### 🟡 Infrastructure (Infraestructura)
+**Implementaciones concretas** de tecnologías:
+- Detectores de OpenCV
+- Motor de texto a voz
+- Captura de video
+- Persistencia en JSON
+- **Implementa** interfaces de Domain
+
+### 🔴 Presentation (Presentación)
+**Interfaces de usuario**:
+- CLI (línea de comandos)
+- Futura GUI
+- **Orquesta** los casos de uso
+
+## 🚀 Instalación
+
+### Requisitos Previos
 - Python 3.8 o superior
-- Cámara web funcional
-- 4 GB RAM mínimo
+- Webcam
+- Sistema operativo: Windows, Linux o macOS
 
-### 2️⃣ Instalar Dependencias
+### Instalación Rápida
 
 ```bash
-# Clonar o descargar el proyecto
-cd EducacionInclusiva
+# 1. Clonar el repositorio
+git clone https://github.com/anyistefania/Sistema-Aprendizaje-Inclusivo-Vision-Artificial.git
+cd Sistema-Aprendizaje-Inclusivo-Vision-Artificial
 
-# Crear entorno virtual (recomendado)
-python -m venv venv
-
-# Activar entorno virtual
-# Windows:
-venv\Scripts\activate
-# Linux/macOS:
-source venv/bin/activate
-
-# Instalar dependencias
+# 2. Instalar dependencias
 pip install -r requirements.txt
+
+# 3. Ejecutar el sistema
+python main.py
 ```
 
-### 3️⃣ Ejecutar el Sistema
+### Instalación para Desarrollo
 
 ```bash
-# Sistema principal para educación especial
-python inclusive_learning_system.py
+# Instalar en modo desarrollo
+pip install -e .
+
+# Ejecutar comando instalado
+aprendizaje-inclusivo
 ```
 
----
+## 📖 Uso
 
-## 📖 Guía de Uso Rápido
+### Inicio Rápido
 
-### Para Docentes
-
-1. **Preparar materiales:**
-   - Objetos de diferentes formas (círculos, cuadrados, triángulos)
-   - Objetos de colores primarios vivos
-   - Fondo claro y uniforme
-
-2. **Iniciar sesión:**
-   ```bash
-   python inclusive_learning_system.py
-   ```
-
-3. **Configurar perfil del estudiante:**
-   - Ingresar nombre y edad
-   - Seleccionar tipo de discapacidad
-   - Elegir nivel de dificultad
-
-4. **Durante la sesión:**
-   - Mostrar objeto frente a la cámara
-   - Presionar **ESPACIO** para identificar
-   - El sistema anunciará forma y color
-   - Escuchar refuerzo positivo
-
-5. **Finalizar:**
-   - Presionar **Q** para salir
-   - El sistema guardará automáticamente el progreso
-
-### Controles del Teclado
-
-| Tecla | Acción |
-|-------|--------|
-| **ESPACIO** | Identificar objeto (función principal) |
-| **Q** | Salir y guardar progreso |
-| **S** | Capturar imagen |
-| **H** | Mostrar/ocultar ayuda |
-| **V** | Activar/desactivar voz |
-
----
-
-## 🎨 Módulos del Sistema
-
-### 1. `shape_detector.py` - Detector de Formas
-Detecta formas geométricas en imágenes o tiempo real.
-
-**Uso:**
 ```bash
-python shape_detector.py
+# Opción 1: Menú principal
+python main.py
+
+# Opción 2: Directamente el sistema de aprendizaje
+python -m src.presentation.cli.learning_interface
+
+# Opción 3: Script legacy
+python INICIAR.py
 ```
 
-**Formas detectadas:** Círculo, triángulo, cuadrado, rectángulo, pentágono, hexágono
+### Flujo de Uso
 
----
+1. **Configurar Perfil del Estudiante**
+   - Nombre
+   - Edad
+   - Tipo de discapacidad
+   - Nivel de dificultad
 
-### 2. `color_detector.py` - Detector de Colores
-Detecta colores en tiempo real con retroalimentación por voz.
+2. **Sistema se Adapta Automáticamente**
+   - Interfaz visual personalizada
+   - Velocidad de voz ajustada
+   - Retroalimentación apropiada
 
-**Uso:**
+3. **Interactuar con Objetos**
+   - Mostrar objetos de colores frente a la cámara
+   - Presionar ESPACIO para identificar
+   - Recibir retroalimentación multimodal
+
+4. **Ver Progreso**
+   - Estadísticas en tiempo real
+   - Archivo JSON con resultados
+   - Historial de sesiones
+
+## 🎨 Características
+
+### Detección de Objetos Didácticos
+
+El sistema utiliza **YOLOv8** (Jocher et al., 2023) con transfer learning (Pan & Yang, 2010) para detectar:
+
+- **40+ Objetos didácticos**: Frutas, animales, vehículos, números, letras, formas, emociones
+- **Categorías pedagógicas**: Clasificados por relevancia educativa
+- **Precisión**: >90% con entrenamiento adecuado (Li & Zhang, 2024)
+- **Tiempo real**: 25-30 FPS en hardware modesto
+
+### Adaptación Inclusiva
+
+Basado en principios del **Diseño Universal para el Aprendizaje** (CAST, 2018; Rose & Meyer, 2002):
+
+| Tipo de Discapacidad | Adaptaciones | Fundamento UDL |
+|----------------------|--------------|----------------|
+| **Baja visión** | Texto 33% más grande, alto contraste | Múltiples representaciones |
+| **Auditiva** | Sin voz, retroalimentación visual reforzada | Múltiples medios de expresión |
+| **Cognitiva** | Interfaz simplificada, instrucciones claras | Múltiples medios de compromiso |
+| **Lenguaje** | Descripciones verbales detalladas | Apoyo al procesamiento lingüístico |
+| **Múltiple** | Combinación de adaptaciones | UDL completo |
+
+### Retroalimentación
+- 🔊 **Auditiva**: Síntesis de voz en español
+- 👁️ **Visual**: Etiquetas en pantalla
+- 📝 **Textual**: Mensajes en consola
+- ✨ **Refuerzo positivo**: Mensajes motivacionales
+
+## 🧪 Tests
+
 ```bash
-python color_detector.py
+# Ejecutar todos los tests
+pytest tests/
+
+# Tests por capa
+pytest tests/domain/
+pytest tests/application/
+pytest tests/infrastructure/
+
+# Con cobertura
+pytest --cov=src tests/
 ```
 
-**Colores detectados:** Rojo, azul, verde, amarillo, naranja, morado, blanco, negro
+## 📊 Beneficios de Clean Architecture
 
----
+### Para Desarrolladores
+- ✅ Código organizado y fácil de mantener
+- ✅ Tests más simples (separación de capas)
+- ✅ Cambio de tecnologías sin afectar lógica de negocio
+- ✅ Trabajo en equipo más eficiente
 
-### 3. `integrated_system.py` - Sistema Integrado
-Combina detección de formas y colores simultáneamente.
+### Para el Proyecto
+- ✅ Escalabilidad: Fácil agregar nuevas funcionalidades
+- ✅ Flexibilidad: Cambiar OpenCV por otra librería sin romper todo
+- ✅ Testabilidad: Cada capa se puede probar independientemente
+- ✅ Mantenibilidad: Cambios localizados, menos efectos secundarios
 
-**Uso:**
-```bash
-python integrated_system.py
-```
+## 🔧 Configuración
 
-**Modos de operación:**
-- Modo 1: Solo formas
-- Modo 2: Solo colores
-- Modo 3: Integrado (formas + colores)
+Editar `config/settings.py` para personalizar:
+- Resolución de cámara
+- Umbrales de detección
+- Velocidad de voz
+- Tamaños de texto
+- Colores de interfaz
 
----
+## 📝 Documentación Académica
 
-### 4. `inclusive_learning_system.py` ⭐ RECOMENDADO
-Sistema principal diseñado para educación especial con todas las adaptaciones.
+### Documentación Técnica
+- [Documentación Completa](docs/README.md)
+- [Manual de Usuario](docs/MANUAL_USUARIO.md)
+- [Guía de Modelos ML](docs/GUIA_MODELOS_ML.md)
 
-**Uso:**
-```bash
-python inclusive_learning_system.py
-```
+### Documentación Académica
+- [**Marco Teórico**](docs/MARCO_TEORICO.md) - Fundamentación teórica completa
+- [**Referencias en APA**](docs/REFERENCIAS.md) - Todas las fuentes citadas
+- [Objetos Didácticos](docs/OBJETOS_DIDACTICOS.md) - Catálogo pedagógico
+- [Resumen Ejecutivo](docs/RESUMEN_EJECUTIVO.md)
+- [Artículo de Investigación](docs/articulo_investigacion.md)
 
-**Características especiales:**
-- Perfil personalizado del estudiante
-- Interfaz adaptativa automática
-- Registro de progreso detallado
-- Refuerzo positivo
-- Actividades didácticas guiadas
+## 🤝 Contribuir
 
----
+1. Fork el proyecto
+2. Crea una rama feature (`git checkout -b feature/AmazingFeature`)
+3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-## 📊 Resultados de Investigación
-
-### Precisión del Sistema
-
-| Categoría | Precisión | Recall | F1-Score |
-|-----------|-----------|--------|----------|
-| Círculo | 96.2% | 94.8% | 95.5% |
-| Triángulo | 95.4% | 93.2% | 94.3% |
-| Cuadrado | 97.1% | 96.5% | 96.8% |
-| Rectángulo | 94.8% | 92.7% | 93.7% |
-| Colores | 92.1% | 90.5% | 91.3% |
-
-### Rendimiento
-- **FPS promedio:** 28-32 frames por segundo
-- **Latencia:** 35-45 ms
-- **Consumo CPU:** 25-35%
-- **Memoria:** 180-220 MB
-
----
-
-## 🎯 Casos de Uso
-
-### Caso 1: Estudiante con Autismo
-**Perfil:** Niño de 7 años con TEA  
-**Desafío:** Dificultad para mantener atención  
-**Resultado:** Incremento de 5 a 15 minutos de atención sostenida en 3 semanas
-
-### Caso 2: Estudiante con Baja Visión
-**Perfil:** Niña de 9 años con baja visión severa  
-**Desafío:** Dependencia total del docente para identificar objetos  
-**Resultado:** Autonomía del 80% en reconocimiento tras 2 meses
-
-### Caso 3: Estudiante con Síndrome de Down
-**Perfil:** Niño de 8 años con discapacidad cognitiva  
-**Desafío:** Dificultad en reconocimiento de formas  
-**Resultado:** Reconoce 5 formas básicas con 90% de precisión
-
----
-
-## 🔬 Fundamento Científico
-
-Este proyecto se basa en investigaciones sobre:
-
-1. **Visión Artificial en Educación:**
-   - Algoritmos de detección de contornos (OpenCV)
-   - Transformación de espacios de color (HSV)
-   - Aproximación poligonal para clasificación de formas
-
-2. **Educación Inclusiva:**
-   - Diseño Universal para el Aprendizaje (DUA)
-   - Retroalimentación multimodal
-   - Refuerzo positivo basado en evidencia
-
-3. **Tecnología Asistiva:**
-   - Tiflotecnología e inteligencia artificial
-   - Adaptación según discapacidad
-   - Seguimiento personalizado del progreso
-
-**Referencias:** Ver `articulo_investigacion.md`
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-### Backend
-- **Python 3.8+** - Lenguaje principal
-- **OpenCV 4.5+** - Procesamiento de imágenes
-- **NumPy** - Operaciones numéricas
-- **pyttsx3** - Síntesis de voz
-
-### Algoritmos
-- Detección de contornos
-- Aproximación poligonal
-- Transformación HSV
-- Morfología matemática
-- Umbralización adaptativa
-
----
-
-## 📚 Documentación Completa
-
-| Documento | Descripción |
-|-----------|-------------|
-| `MANUAL_USUARIO.md` | Manual completo de instalación y uso |
-| `articulo_investigacion.md` | Artículo científico con fundamentos teóricos |
-| Código comentado | Cada archivo `.py` incluye documentación |
-
----
-
-## 🤝 Contribuciones
-
-Este es un proyecto de código abierto para educación especial. Las contribuciones son bienvenidas:
-
-1. 🐛 **Reportar errores:** Describe el problema detalladamente
-2. 💡 **Sugerir mejoras:** Nuevas funcionalidades o adaptaciones
-3. 🔧 **Contribuir código:** Fork, modifica y envía pull request
-4. 📖 **Mejorar documentación:** Traducir, ampliar, corregir
-
----
-
-## 🏆 Reconocimientos
-
-Proyecto desarrollado por el **Semillero de Investigación en Tecnología Educativa**.
-
-Agradecimientos especiales a:
-- Docentes de educación especial que validaron el sistema
-- Estudiantes participantes en las pruebas piloto
-- Familias que apoyaron el proyecto
-
----
+### Guías de Contribución
+- Seguir Clean Architecture
+- Agregar tests para nuevas funcionalidades
+- Documentar código
+- Mantener compatibilidad con Python 3.8+
 
 ## 📜 Licencia
 
-Este proyecto está licenciado para uso educativo y de investigación.
+Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detalles.
 
-**Permitido:**
-- ✅ Uso en instituciones educativas
-- ✅ Modificación para necesidades específicas
-- ✅ Investigación académica
-- ✅ Capacitación de docentes
+## 👥 Autores
 
-**Requerido:**
-- Citar el proyecto original
-- Compartir mejoras con la comunidad
+- **Semillero de Investigación** - Desarrollo inicial
+- **Refactorización v2.0** - Clean Architecture
 
----
+## 🙏 Agradecimientos
 
-## 📞 Contacto y Soporte
+- Comunidad de educación especial por feedback y validación
+- OpenCV (Bradski & Kaehler, 2008) y contribuidores
+- Ultralytics por YOLOv8 (Jocher et al., 2023)
+- CAST por el framework UDL (2018)
+- Docentes y estudiantes que participaron en pruebas piloto
 
-### Documentación
-- **Manual de usuario:** `MANUAL_USUARIO.md`
-- **Artículo científico:** `articulo_investigacion.md`
+## 📚 Cómo Citar Este Proyecto
 
-### Problemas Comunes
-Ver sección "Solución de Problemas" en el manual de usuario.
+**Formato APA:**
 
-### Comunidad
-Para preguntas, sugerencias o compartir experiencias, contacta al equipo del proyecto.
+```
+[Tu Nombre]. (2025). Sistema de Aprendizaje Inclusivo con Visión Artificial
+  para el Reconocimiento de Objetos Didácticos en Educación Especial
+  [Software]. GitHub. https://github.com/anyistefania/
+  Sistema-Aprendizaje-Inclusivo-Vision-Artificial
+```
 
----
+**Referencias Principales:**
 
-## 🔄 Actualizaciones Futuras
+- CAST. (2018). *Universal Design for Learning Guidelines version 2.2*. https://udlguidelines.cast.org/
+- Jocher, G., Chaurasia, A., & Qiu, J. (2023). *Ultralytics YOLOv8*. GitHub. https://github.com/ultralytics/ultralytics
+- Martin, R. C. (2017). *Clean Architecture: A craftsman's guide to software structure and design*. Prentice Hall.
+- Zhang, L., Carter, R. A., Liu, Y., & Peng, P. (2024). Let's CHAT about artificial intelligence for students with disabilities. *Review of Educational Research*. https://doi.org/10.3102/00346543241293424
 
-### Versión 1.0 (Actual)
-✅ Detección de formas básicas  
-✅ Detección de colores primarios  
-✅ Retroalimentación por voz  
-✅ Adaptación por discapacidad  
-✅ Registro de progreso  
+Ver referencias completas en: [`docs/REFERENCIAS.md`](docs/REFERENCIAS.md)
 
+## 📬 Contacto
 
----
-
-## 🌈 Impacto Social
-
-Este sistema busca democratizar el acceso a tecnología asistiva en educación especial:
-
-- 💰 **Bajo costo:** Software gratuito y open source
-- 🌍 **Accesible:** Solo requiere una cámara web
-- 🎓 **Efectivo:** Mejora demostrable en aprendizaje
-- 👥 **Inclusivo:** Adaptado a múltiples discapacidades
-- 📈 **Escalable:** Puede usarse en cualquier institución
-
-
-
-## 📸 Capturas de Pantalla
-
-### Sistema en Acción
-![Sistema detectando formas y colores en tiempo real]
-
-### Interfaz Adaptativa
-![Interfaz adaptada para baja visión]
-
-### Registro de Progreso
-![Dashboard de progreso del estudiante]
-
+Para preguntas, sugerencias o reportar problemas:
+- Abrir un [Issue](https://github.com/anyistefania/Sistema-Aprendizaje-Inclusivo-Vision-Artificial/issues)
+- Contactar al equipo de desarrollo
 
 ---
 
+## 📖 Base Académica
 
-**Versión:** 1.0  
-**Última actualización:** Noviembre 2025  
-**Estado:** Activo y en desarrollo
+Este proyecto se fundamenta en:
+
+- **Pedagogía:** Diseño Universal para el Aprendizaje (CAST, 2018; Rose & Meyer, 2002)
+- **IA en Educación:** Meta-análisis reciente (Zhang et al., 2024; Zhou et al., 2024)
+- **Visión Artificial:** YOLOv8 en educación (Li & Zhang, 2024; Chen et al., 2024)
+- **Ingeniería:** Clean Architecture (Martin, 2017) + DDD (Evans, 2003)
+
+**Todas las afirmaciones están respaldadas por literatura académica verificable.**
+
+Ver [`docs/MARCO_TEORICO.md`](docs/MARCO_TEORICO.md) para fundamentación completa.
 
 ---
 
+**Versión 2.1** - Clean Architecture + ML | Fundamentado Académicamente | Noviembre 2025
