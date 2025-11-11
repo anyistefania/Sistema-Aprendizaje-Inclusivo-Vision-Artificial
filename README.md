@@ -2,7 +2,7 @@
 
 Sistema especializado para educación especial que utiliza visión artificial para detectar objetos didácticos, con interfaz adaptativa según el tipo de discapacidad del estudiante. Fundamentado en principios del Diseño Universal para el Aprendizaje (CAST, 2018) e investigación reciente sobre IA en educación especial (Zhang et al., 2024).
 
-**Versión 2.1** - Clean Architecture + Machine Learning
+**Versión 2.0** - Clean Architecture + Machine Learning
 
 **Proyecto Académico** | **Referencias Verificables** | **Metodología Replicable**
 
@@ -280,16 +280,9 @@ Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detall
 
 ## 👥 Autores
 
-- **Semillero de Investigación** - Desarrollo inicial
+- **Semillero de Investigación PROMETEO ** - Desarrollo inicial
 - **Refactorización v2.0** - Clean Architecture
 
-## 🙏 Agradecimientos
-
-- Comunidad de educación especial por feedback y validación
-- OpenCV (Bradski & Kaehler, 2008) y contribuidores
-- Ultralytics por YOLOv8 (Jocher et al., 2023)
-- CAST por el framework UDL (2018)
-- Docentes y estudiantes que participaron en pruebas piloto
 
 ## 📚 Cómo Citar Este Proyecto
 
@@ -311,13 +304,6 @@ Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detall
 
 Ver referencias completas en: [`docs/REFERENCIAS.md`](docs/REFERENCIAS.md)
 
-## 📬 Contacto
-
-Para preguntas, sugerencias o reportar problemas:
-- Abrir un [Issue](https://github.com/anyistefania/Sistema-Aprendizaje-Inclusivo-Vision-Artificial/issues)
-- Contactar al equipo de desarrollo
-
----
 
 ## 📖 Base Académica
 
